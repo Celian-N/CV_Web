@@ -1,0 +1,42 @@
+$color-primary: white;
+$color-secondary: black;
+$color-tertiary: rgba($color-secondary, 0.6);
+$color-accent: rgb(229, 75, 75);
+@media (prefers-color-scheme: dark) {
+  $color-secondary: black;
+  $color-primary: white;
+}
+
+$font-size: (
+  name: 15vh,
+  text: 10vh,
+  menu: 2vh,
+  button: 3vh,
+  introduction: 40px,
+  title: 40px,
+  etiquette: 25px,
+  footer: 15px,
+);
+
+@keyframes carousel {
+  0%,
+  18% {
+    transform: translateY(0);
+  }
+  23%,
+  41% {
+    transform: translateY(-45px);
+  }
+  46%,
+  64% {
+    transform: translateY(-90px);
+  }
+  69%,
+  87% {
+    transform: translateY(-135px);
+  }
+  92%,
+  100% {
+    transform: translateY(-180px);
+  }
+}

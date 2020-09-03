@@ -1,0 +1,78 @@
+$color-primary: rgba(66, 61, 61);
+$color-secondary: white;
+$color-tertiary: rgba($color-primary, 0.6);
+$color-quaternary:rgba($color-secondary, 0.6);
+$color-accent: rgb(229, 75, 75);
+html{
+    --color-primary: rgba(66, 61, 61);
+    --color-secondary: white;
+    --color-tertiary: rgba(66, 61, 61, 0.6);
+    --color-quaternary:rgba(0,0,0, 0.3);
+    /*--color-accent: rgb(229, 75, 75);*/
+    --color-invalid:rgba(229, 75, 75, 0.7);
+    --color-accent: rgb(45, 162, 153);
+}
+
+html.nuit{
+    --color-primary: white;
+    --color-secondary: rgba(66, 61, 61);
+    --color-tertiary: rgba(255, 255, 255, 0.6);
+    --color-quaternary:rgba(0,0,0, 0.3);
+    --color-invalid:rgba(229, 75, 75, 0.7);
+    --color-accent: rgb(94, 158, 159);
+}
+/*
+@media (prefers-color-scheme: dark) {
+  :root{
+  --color-primary: white;
+    --color-secondary: rgba(66, 61, 61);
+    --color-tertiary: rgba(255, 255, 255, 0.6);
+    --color-quaternary:rgba(0,0,0, 0.3);
+    --color-invalid:rgba(229, 75, 75, 0.7);
+    --color-accent: rgb(94, 158, 159);
+  }
+}*/
+
+$font-size: (
+  name: 15vh,
+  text: 10vh,
+  menu: 2vh,
+  button: 3vh,
+  introduction: 40px,
+  title: 40px,
+  etiquette: 25px,
+  footer: 15px,
+);
+
+@keyframes carousel {
+  0%,
+  18% {
+    transform: translateY(0);
+  }
+  23%,
+  41% {
+    transform: translateY(-45px);
+  }
+  46%,
+  64% {
+    transform: translateY(-90px);
+  }
+  69%,
+  87% {
+    transform: translateY(-135px);
+  }
+  92%,
+  100% {
+    transform: translateY(-180px);
+  }
+}
+@keyframes translate_opacity{
+  from{
+    
+   opacity: 0.3;
+  }
+  to{
+    transform:translateX(70vw);
+    opacity: 1;
+  }
+}
