@@ -13,20 +13,25 @@
   transition: 500ms all ease;
   text-align: center;
   & svg{
-    margin-top: 35vh;
+    position: relative;
+    top: 50%;
+    transform:translateY(-50%);
     width: 300px;
     fill: transparent;
-    transition: fill 0.5s linear;
+    
   }
   & .path {
-    stroke-dasharray: 2500;
-    stroke-dashoffset: 2500;
+    stroke-dasharray: 2260;
+    stroke-dashoffset: 2260;
     animation: dash 3s linear;
+    transition: fill 0.5s linear;
   }
   & .path2 {
-    stroke-dasharray: 1945;
-    stroke-dashoffset: 1945;
-    animation: dash2 3s linear;
+    stroke-dasharray: 889;
+    stroke-dashoffset: -889;
+    animation: dash2 2s 1s linear;
+    transition: fill 0.5s linear;
+   
   }
   .loading{
     stroke-dashoffset: 0;
@@ -40,7 +45,7 @@
   
 @keyframes dash {
   from {
-    stroke-dashoffset:2500;
+    stroke-dashoffset:2260;
   }
   to {
     stroke-dashoffset: 0;
@@ -48,7 +53,7 @@
 }
 @keyframes dash2 {
   from {
-    stroke-dashoffset:1945;
+    stroke-dashoffset:-889;
   }
   to {
     stroke-dashoffset: 0;
@@ -57,12 +62,15 @@
 /*-----LOGO CELIAN----*/
 #logo_celian{
   position: absolute;
-  left: 5px;
-  width: 80px;
-  fill: white;
-  animation: logo_cel 20s 5s ease-in-out infinite ;
-  #pathii{
-    fill: red;
+  left: 15px;
+  width: 60px;
+  animation: logo_cel 20s 7s ease-in-out infinite ;
+  opacity: 0.7;
+  .logo_celian__path--1{
+    fill: var(--color-secondary);
+  }
+  .logo_celian__path--2{
+    fill: url(#MyLogoGradient2);
   }
 }
 
@@ -79,137 +87,7 @@
   100%{ 
   }
 }
-/*------BOUTON DOWNLOAD-------*/
-$thick: 3px;
-$pad: 0.7em;
-$extra: calc(#{$pad} * 1.2);
 
-.btn_download,
-.btn_sendform {
-  background-color: transparent;
-  color: var(--color-primary);
-  padding: $pad $extra;
-  display: inline-block;
-  border: $thick solid transparent;
-  position: relative;
-  cursor: pointer;
-  letter-spacing: 0.07em;
-  font-size: map-get($font-size, button);
-
-  width: fit-content;
-
-  .text {
-    padding: 0.3em;
-    transform: translate3d(0, $pad, 0);
-    display: block;
-    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
-  }
-
-  &:after {
-    position: absolute;
-    content: "";
-    bottom: -$thick;
-    left: $extra;
-    right: $extra;
-    height: $thick;
-    background: var(--color-accent);
-    // z-index: -1;
-    transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s,
-      right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s,
-      left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
-    transform-origin: left;
-  }
-}
-
-.line {
-  position: absolute;
-  background: var(--color-accent);
-
-  &.-right,
-  &.-left {
-    width: $thick;
-    bottom: -$thick;
-    top: -$thick;
-    transform: scale3d(1, 0, 1);
-  }
-
-  &.-top,
-  &.-bottom {
-    height: $thick;
-    left: -$thick;
-    right: -$thick;
-    transform: scale3d(0, 1, 1);
-  }
-
-  &.-right {
-    right: -$thick;
-    transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
-    transform-origin: top;
-  }
-
-  &.-top {
-    top: -$thick;
-    transition: transform 0.08s linear 0.43s;
-    transform-origin: left;
-  }
-
-  &.-left {
-    left: -$thick;
-    transition: transform 0.08s linear 0.51s;
-    transform-origin: bottom;
-  }
-
-  &.-bottom {
-    bottom: -$thick;
-    transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
-    transform-origin: right;
-  }
-}
-
-.btn_download:hover,
-.btn_download:active,
-.btn_sendform:hover,
-.btn_sendform:active {
-  .text {
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
-  }
-
-  &:after {
-    transform: scale3d(0, 1, 1);
-    right: -$thick;
-    left: -$thick;
-    transform-origin: right;
-    transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s,
-      right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
-  }
-
-  .line {
-    transform: scale3d(1, 1, 1);
-
-    &.-right {
-      transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
-      transform-origin: bottom;
-    }
-
-    &.-top {
-      transition: transform 0.08s linear 0.4s;
-      transform-origin: right;
-    }
-
-    &.-left {
-      transition: transform 0.08s linear 0.48s;
-      transform-origin: top;
-    }
-
-    &.-bottom {
-      transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
-      transform-origin: left;
-    }
-  }
-}
-
-/*-------------------*/
 /*-------CURSOR-------*/
 
 /*.cursor {
@@ -231,7 +109,6 @@ $extra: calc(#{$pad} * 1.2);
     background: crimson;
     border-radius: 50%;
 }*/
-
 
 .cursor {
   position: fixed;
@@ -268,6 +145,12 @@ $extra: calc(#{$pad} * 1.2);
   /*-webkit-transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;
   transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;*/
   transition: width 100ms, height 100ms, opacity 100ms, margin-left 100ms, margin-top 100ms;
+}
+.bg_white{
+  background-color: white;
+}
+.border_white{
+  border: 1px solid white;
 }
 
 .cursor-over {
@@ -406,3 +289,135 @@ input:checked + .slider:before {
   opacity: 0;
   transition: transform 250ms ease-in-out;
 }
+
+/*------BOUTON DOWNLOAD-------*/
+$thick: 3px;
+$pad: 0.7em;
+$extra: calc(#{$pad} * 1.2);
+
+.btn_download,
+.btn_sendform {
+  background-color: transparent;
+  color: var(--color-primary);
+  padding: $pad $extra;
+  display: inline-block;
+  border: $thick solid transparent;
+  position: relative;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+  font-size: map-get($font-size, button);
+
+  width: fit-content;
+
+  .text {
+    padding: 0.3em;
+    transform: translate3d(0, $pad, 0);
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    bottom: -$thick;
+    left: $extra;
+    right: $extra;
+    height: $thick;
+    background: var(--color-accent);
+    // z-index: -1;
+    transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s,
+      right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s,
+      left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
+    transform-origin: left;
+  }
+}
+
+.line {
+  position: absolute;
+  background: var(--color-accent);
+
+  &.-right,
+  &.-left {
+    width: $thick;
+    bottom: -$thick;
+    top: -$thick;
+    transform: scale3d(1, 0, 1);
+  }
+
+  &.-top,
+  &.-bottom {
+    height: $thick;
+    left: -$thick;
+    right: -$thick;
+    transform: scale3d(0, 1, 1);
+  }
+
+  &.-right {
+    right: -$thick;
+    transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
+    transform-origin: top;
+  }
+
+  &.-top {
+    top: -$thick;
+    transition: transform 0.08s linear 0.43s;
+    transform-origin: left;
+  }
+
+  &.-left {
+    left: -$thick;
+    transition: transform 0.08s linear 0.51s;
+    transform-origin: bottom;
+  }
+
+  &.-bottom {
+    bottom: -$thick;
+    transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
+    transform-origin: right;
+  }
+}
+
+.btn_download:hover,
+.btn_download:active,
+.btn_sendform:hover,
+.btn_sendform:active {
+  .text {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+  }
+
+  &:after {
+    transform: scale3d(0, 1, 1);
+    right: -$thick;
+    left: -$thick;
+    transform-origin: right;
+    transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s,
+      right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
+  }
+
+  .line {
+    transform: scale3d(1, 1, 1);
+
+    &.-right {
+      transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
+      transform-origin: bottom;
+    }
+
+    &.-top {
+      transition: transform 0.08s linear 0.4s;
+      transform-origin: right;
+    }
+
+    &.-left {
+      transition: transform 0.08s linear 0.48s;
+      transform-origin: top;
+    }
+
+    &.-bottom {
+      transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
+      transform-origin: left;
+    }
+  }
+}
+
+/*-------------------*/

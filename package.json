@@ -1,0 +1,20 @@
+{
+  "name": "cv_web",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./All/SCSS/main.scss:./All/CSS/main.css --style expanded"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Celian-N/CV_Web.git"
+  },
+  "author": "Célian Niclot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Celian-N/CV_Web/issues"
+  },
+  "homepage": "https://github.com/Celian-N/CV_Web#readme"
+}

@@ -12,7 +12,9 @@ let path_length2 = load_path2.getTotalLength();
 console.log(path_length);
 console.log(path_length2);
 
-setTimeout(()=>{load_img.style.fill="black";}, 3000);
+
+setTimeout(()=>{load_path.style.fill="var(--color-accent)";}, 3000);
+setTimeout(()=>{load_path2.style.fill="url(#MyLogoGradient)";},3000);
 setTimeout(()=>{loader.classList.add("loaded")}, 5000);
 
 //MODE NUIT PREFER COLOR DARK
@@ -31,6 +33,7 @@ const cursor_inner = document.querySelector(".cursor-inner");
 const cursor_outer = document.querySelector(".cursor-outer");
 const btn_sendform = document.getElementById("btn_sendform");
 const links = document.getElementsByTagName("a");
+const navbar = document.getElementById("navbar");
 
 document.addEventListener("mousemove", (e) => {
   cursor_inner.setAttribute(
@@ -51,6 +54,15 @@ document.addEventListener("click", () => {
   setTimeout(() => {
     cursor_inner.classList.remove("expand");
   }, 500);
+});
+
+navbar.addEventListener("mouseover", () => {
+  cursor_inner.classList.add("bg_white");
+  cursor_outer.classList.add("border_white");
+});
+navbar.addEventListener("mouseout", () => {
+  cursor_inner.classList.remove("bg_white");
+  cursor_outer.classList.remove("border_white");
 });
 for (var l = 0; l < links.length; l++) {
   links[l].addEventListener("mouseover", () => {
@@ -80,28 +92,7 @@ btn_sendform.addEventListener("mouseout", () => {
   cursor_inner.classList.remove("cursor-over");
   cursor_outer.classList.remove("cursor-over");
 });
-/*
-function shane_tm_cursor(){
-  "use strict";
 
-var myCursor	= document.querySelectorAll('.cursor');
-
-if(myCursor.length){
-  if ($("body")) {
-      const e = document.querySelector(".cursor-inner"),
-          t = document.querySelector(".cursor-outer");
-      let n, i = 0,
-          o = !1;
-      window.onmousemove = function (s) {
-          o || (t.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)"), e.style.transform = "translate(" + s.clientX + "px, " + s.clientY + "px)", n = s.clientY, i = s.clientX
-      }, $("body").on("mouseenter", "a, .cursor-pointer", function () {
-          e.classList.add("cursor-hover"), t.classList.add("cursor-hover")
-      }), $("body").on("mouseleave", "a, .cursor-pointer", function () {
-          $(this).is("a") && $(this).closest(".cursor-pointer").length || (e.classList.remove("cursor-hover"), t.classList.remove("cursor-hover"))
-      }), e.style.visibility = "visible", t.style.visibility = "visible"
-  }
-}
-};*/
 
 //Dark mode
 const html = document.getElementsByTagName("html")[0];

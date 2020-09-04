@@ -739,20 +739,23 @@ html.nuit {
   text-align: center;
 }
 #loader svg {
-  margin-top: 35vh;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
   width: 300px;
   fill: transparent;
-  transition: fill 0.5s linear;
 }
 #loader .path {
-  stroke-dasharray: 2500;
-  stroke-dashoffset: 2500;
+  stroke-dasharray: 2260;
+  stroke-dashoffset: 2260;
   animation: dash 3s linear;
+  transition: fill 0.5s linear;
 }
 #loader .path2 {
-  stroke-dasharray: 1945;
-  stroke-dashoffset: 1945;
-  animation: dash2 3s linear;
+  stroke-dasharray: 889;
+  stroke-dashoffset: -889;
+  animation: dash2 2s 1s linear;
+  transition: fill 0.5s linear;
 }
 #loader .loading {
   stroke-dashoffset: 0;
@@ -765,7 +768,7 @@ html.nuit {
 
 @keyframes dash {
   from {
-    stroke-dashoffset: 2500;
+    stroke-dashoffset: 2260;
   }
   to {
     stroke-dashoffset: 0;
@@ -773,7 +776,7 @@ html.nuit {
 }
 @keyframes dash2 {
   from {
-    stroke-dashoffset: 1945;
+    stroke-dashoffset: -889;
   }
   to {
     stroke-dashoffset: 0;
@@ -782,13 +785,16 @@ html.nuit {
 /*-----LOGO CELIAN----*/
 #logo_celian {
   position: absolute;
-  left: 5px;
-  width: 80px;
-  fill: white;
-  animation: logo_cel 20s 5s ease-in-out infinite;
+  left: 15px;
+  width: 60px;
+  animation: logo_cel 20s 7s ease-in-out infinite;
+  opacity: 0.7;
 }
-#logo_celian #pathii {
-  fill: red;
+#logo_celian .logo_celian__path--1 {
+  fill: var(--color-secondary);
+}
+#logo_celian .logo_celian__path--2 {
+  fill: url(#MyLogoGradient2);
 }
 
 @keyframes logo_cel {
@@ -802,130 +808,6 @@ html.nuit {
     transform: scale(1) rotate(0deg);
   }
 }
-/*------BOUTON DOWNLOAD-------*/
-.btn_download,
-.btn_sendform {
-  background-color: transparent;
-  color: var(--color-primary);
-  padding: 0.7em calc(0.7em * 1.2);
-  display: inline-block;
-  border: 3px solid transparent;
-  position: relative;
-  cursor: pointer;
-  letter-spacing: 0.07em;
-  font-size: 3vh;
-  width: fit-content;
-}
-.btn_download .text,
-.btn_sendform .text {
-  padding: 0.3em;
-  transform: translate3d(0, 0.7em, 0);
-  display: block;
-  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
-}
-.btn_download:after,
-.btn_sendform:after {
-  position: absolute;
-  content: "";
-  bottom: -3px;
-  left: calc(0.7em * 1.2);
-  right: calc(0.7em * 1.2);
-  height: 3px;
-  background: var(--color-accent);
-  transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s, right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s, left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
-  transform-origin: left;
-}
-
-.line {
-  position: absolute;
-  background: var(--color-accent);
-}
-.line.-right, .line.-left {
-  width: 3px;
-  bottom: -3px;
-  top: -3px;
-  transform: scale3d(1, 0, 1);
-}
-.line.-top, .line.-bottom {
-  height: 3px;
-  left: -3px;
-  right: -3px;
-  transform: scale3d(0, 1, 1);
-}
-.line.-right {
-  right: -3px;
-  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
-  transform-origin: top;
-}
-.line.-top {
-  top: -3px;
-  transition: transform 0.08s linear 0.43s;
-  transform-origin: left;
-}
-.line.-left {
-  left: -3px;
-  transition: transform 0.08s linear 0.51s;
-  transform-origin: bottom;
-}
-.line.-bottom {
-  bottom: -3px;
-  transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
-  transform-origin: right;
-}
-
-.btn_download:hover .text,
-.btn_download:active .text,
-.btn_sendform:hover .text,
-.btn_sendform:active .text {
-  transform: translate3d(0, 0, 0);
-  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
-}
-.btn_download:hover:after,
-.btn_download:active:after,
-.btn_sendform:hover:after,
-.btn_sendform:active:after {
-  transform: scale3d(0, 1, 1);
-  right: -3px;
-  left: -3px;
-  transform-origin: right;
-  transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s, right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
-}
-.btn_download:hover .line,
-.btn_download:active .line,
-.btn_sendform:hover .line,
-.btn_sendform:active .line {
-  transform: scale3d(1, 1, 1);
-}
-.btn_download:hover .line.-right,
-.btn_download:active .line.-right,
-.btn_sendform:hover .line.-right,
-.btn_sendform:active .line.-right {
-  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
-  transform-origin: bottom;
-}
-.btn_download:hover .line.-top,
-.btn_download:active .line.-top,
-.btn_sendform:hover .line.-top,
-.btn_sendform:active .line.-top {
-  transition: transform 0.08s linear 0.4s;
-  transform-origin: right;
-}
-.btn_download:hover .line.-left,
-.btn_download:active .line.-left,
-.btn_sendform:hover .line.-left,
-.btn_sendform:active .line.-left {
-  transition: transform 0.08s linear 0.48s;
-  transform-origin: top;
-}
-.btn_download:hover .line.-bottom,
-.btn_download:active .line.-bottom,
-.btn_sendform:hover .line.-bottom,
-.btn_sendform:active .line.-bottom {
-  transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
-  transform-origin: left;
-}
-
-/*-------------------*/
 /*-------CURSOR-------*/
 /*.cursor {
     width: 32px;
@@ -981,6 +863,14 @@ html.nuit {
   /*-webkit-transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;
   transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;*/
   transition: width 100ms, height 100ms, opacity 100ms, margin-left 100ms, margin-top 100ms;
+}
+
+.bg_white {
+  background-color: white;
+}
+
+.border_white {
+  border: 1px solid white;
 }
 
 .cursor-over {
@@ -1119,6 +1009,130 @@ input:checked + .slider:before {
   transition: transform 250ms ease-in-out;
 }
 
+/*------BOUTON DOWNLOAD-------*/
+.btn_download,
+.btn_sendform {
+  background-color: transparent;
+  color: var(--color-primary);
+  padding: 0.7em calc(0.7em * 1.2);
+  display: inline-block;
+  border: 3px solid transparent;
+  position: relative;
+  cursor: pointer;
+  letter-spacing: 0.07em;
+  font-size: 3vh;
+  width: fit-content;
+}
+.btn_download .text,
+.btn_sendform .text {
+  padding: 0.3em;
+  transform: translate3d(0, 0.7em, 0);
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.btn_download:after,
+.btn_sendform:after {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: calc(0.7em * 1.2);
+  right: calc(0.7em * 1.2);
+  height: 3px;
+  background: var(--color-accent);
+  transition: transform 0.8s cubic-bezier(1, 0, 0.37, 1) 0.2s, right 0.2s cubic-bezier(0.04, 0.48, 0, 1) 0.6s, left 0.4s cubic-bezier(0.04, 0.48, 0, 1) 0.6s;
+  transform-origin: left;
+}
+
+.line {
+  position: absolute;
+  background: var(--color-accent);
+}
+.line.-right, .line.-left {
+  width: 3px;
+  bottom: -3px;
+  top: -3px;
+  transform: scale3d(1, 0, 1);
+}
+.line.-top, .line.-bottom {
+  height: 3px;
+  left: -3px;
+  right: -3px;
+  transform: scale3d(0, 1, 1);
+}
+.line.-right {
+  right: -3px;
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.23s;
+  transform-origin: top;
+}
+.line.-top {
+  top: -3px;
+  transition: transform 0.08s linear 0.43s;
+  transform-origin: left;
+}
+.line.-left {
+  left: -3px;
+  transition: transform 0.08s linear 0.51s;
+  transform-origin: bottom;
+}
+.line.-bottom {
+  bottom: -3px;
+  transition: transform 0.3s cubic-bezier(1, 0, 0.65, 1.01);
+  transform-origin: right;
+}
+
+.btn_download:hover .text,
+.btn_download:active .text,
+.btn_sendform:hover .text,
+.btn_sendform:active .text {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+}
+.btn_download:hover:after,
+.btn_download:active:after,
+.btn_sendform:hover:after,
+.btn_sendform:active:after {
+  transform: scale3d(0, 1, 1);
+  right: -3px;
+  left: -3px;
+  transform-origin: right;
+  transition: transform 0.2s cubic-bezier(1, 0, 0.65, 1.01) 0.17s, right 0.2s cubic-bezier(1, 0, 0.65, 1.01), left 0s 0.3s;
+}
+.btn_download:hover .line,
+.btn_download:active .line,
+.btn_sendform:hover .line,
+.btn_sendform:active .line {
+  transform: scale3d(1, 1, 1);
+}
+.btn_download:hover .line.-right,
+.btn_download:active .line.-right,
+.btn_sendform:hover .line.-right,
+.btn_sendform:active .line.-right {
+  transition: transform 0.1s cubic-bezier(1, 0, 0.65, 1.01) 0.2s;
+  transform-origin: bottom;
+}
+.btn_download:hover .line.-top,
+.btn_download:active .line.-top,
+.btn_sendform:hover .line.-top,
+.btn_sendform:active .line.-top {
+  transition: transform 0.08s linear 0.4s;
+  transform-origin: right;
+}
+.btn_download:hover .line.-left,
+.btn_download:active .line.-left,
+.btn_sendform:hover .line.-left,
+.btn_sendform:active .line.-left {
+  transition: transform 0.08s linear 0.48s;
+  transform-origin: top;
+}
+.btn_download:hover .line.-bottom,
+.btn_download:active .line.-bottom,
+.btn_sendform:hover .line.-bottom,
+.btn_sendform:active .line.-bottom {
+  transition: transform 0.5s cubic-bezier(0, 0.53, 0.29, 1) 0.56s;
+  transform-origin: left;
+}
+
+/*-------------------*/
 /*header, div, section, p, ul
 {
     border: 3px solid green;
