@@ -12,10 +12,15 @@ let path_length2 = load_path2.getTotalLength();
 console.log(path_length);
 console.log(path_length2);
 
-
-setTimeout(()=>{load_path.style.fill="var(--color-accent)";}, 3000);
-setTimeout(()=>{load_path2.style.fill="url(#MyLogoGradient)";},3000);
-setTimeout(()=>{loader.classList.add("loaded")}, 5000);
+setTimeout(() => {
+  load_path.style.fill = "var(--color-accent)";
+}, 3000);
+setTimeout(() => {
+  load_path2.style.fill = "url(#MyLogoGradient)";
+}, 3000);
+setTimeout(() => {
+  loader.classList.add("loaded");
+}, 5000);
 
 //MODE NUIT PREFER COLOR DARK
 /*const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -34,17 +39,26 @@ const cursor_outer = document.querySelector(".cursor-outer");
 const btn_sendform = document.getElementById("btn_sendform");
 const links = document.getElementsByTagName("a");
 const navbar = document.getElementById("navbar");
+const mainPicture = document.querySelector(".photo");
 
 document.addEventListener("mousemove", (e) => {
   cursor_inner.setAttribute(
     "style",
     //"top:" + (e.pageY - 16) + "px; left:" + (e.pageX - 16) + "px;"
-    "transform: translate(" + (e.clientX) + "px, " + (e.clientY) + "px);"
+    "transform: translate(" + e.clientX + "px, " + e.clientY + "px);"
   );
   cursor_outer.setAttribute(
     "style",
     //"top:" + (e.pageY - 16) + "px; left:" + (e.pageX - 16) + "px;"
-    "transform: translate(" + (e.clientX) + "px, " + (e.clientY) + "px);"
+    "transform: translate(" + e.clientX + "px, " + e.clientY + "px);"
+  );
+  mainPicture.setAttribute(
+    "style",
+    "background-position :" +
+      (40 + e.clientX / 500) +
+      "% " +
+      -e.clientY / 100 +
+      "px;"
   );
 });
 
@@ -72,7 +86,7 @@ for (var l = 0; l < links.length; l++) {
   links[l].addEventListener("click", () => {
     cursor_inner.classList.remove("expand");
     cursor_inner.classList.add("expand_links");
-  
+
     setTimeout(() => {
       cursor_inner.classList.remove("expand_links");
     }, 500);
@@ -92,7 +106,6 @@ btn_sendform.addEventListener("mouseout", () => {
   cursor_inner.classList.remove("cursor-over");
   cursor_outer.classList.remove("cursor-over");
 });
-
 
 //Dark mode
 const html = document.getElementsByTagName("html")[0];
@@ -242,7 +255,7 @@ for (let i = 0; i < sections.length; i++) {
     setTimeout(() => {
       sections[i].classList.replace("display_none", "display_unset");
     }, 500);
-    
+
     for (let j = 0; j < sections.length; j++) {
       if (j != i) {
         sections[j].classList.replace("appear", "disappear");
@@ -276,18 +289,18 @@ let liste = document.querySelectorAll(".experiences li");
   })
   }*/
 for (let i = 0; i < read_more.length; i++) {
-  read_more[i].addEventListener("click", function () {
-    if (getComputedStyle(details[i]).height != "150px") {
-      details[i].style.height = "150px";
-      for (var j = 0; j < read_more.length; j++) {
-        if (j != i) {
-          details[j].style.height = "0";
+    read_more[i].addEventListener("click", function () {
+      if (getComputedStyle(details[i]).height != "150px") {
+        details[i].style.height = "150px";
+        for (var j = 0; j < read_more.length; j++) {
+          if (j != i) {
+            details[j].style.height = "0";
+          }
         }
+      } else {
+        details[i].style.height = "0";
       }
-    } else {
-      details[i].style.height = "0";
-    }
-  });
+    });
 }
 
 //Scroll apparition
@@ -298,8 +311,11 @@ let porcent = document.getElementsByClassName("porcent");
 
 let transition_delay;
 
-window.addEventListener("scroll", function () {
-  if (window.pageYOffset > resume_section.offsetHeight / 5) {
+window.addEventListener("scroll", function scrolling() {
+  if (
+    window.pageYOffset > resume_section.offsetHeight / 5 &&
+    navigation[2].classList.contains("active")
+  ) {
     console.log(resume_section.offsetHeight);
     console.log(window.pageYOffset);
     for (i = 0; i < skills_line.length; i++) {
@@ -308,6 +324,7 @@ window.addEventListener("scroll", function () {
       transition_delay = 200 * i + "ms";
       skills_line[i].style.transitionDelay = transition_delay;
     }
+    window.removeEventListener("scroll", scrolling);
   } else {
     transition_delay = "0ms";
     for (i = 0; i < skills_line.length; i++) {

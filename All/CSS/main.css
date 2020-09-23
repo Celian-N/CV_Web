@@ -164,8 +164,7 @@ header nav a:hover {
 header .photo {
   width: 85%;
   background: url(../assets/Images/moi2.JPG) no-repeat;
-  background-size: auto 100%;
-  background-position: 40%;
+  background-size: auto 103%;
   opacity: 0.8;
 }
 header svg {
